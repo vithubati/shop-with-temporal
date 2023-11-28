@@ -1,0 +1,15 @@
+env: development
+temporal:
+  hostport: "temporal-server.vithulab.com:7233"
+services:
+  shopper:
+    appname: game
+    host: localhost
+    port: 8086
+    version: v0.0.1
+    loglevel: 5
+    db:
+      dialect: 1
+      database: shopper.db
+
+
