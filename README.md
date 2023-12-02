@@ -24,19 +24,26 @@ This command downloads the docker-compose setup for Temporal Community Edition, 
 
 ## Running the Example
 
-### bring up the application
+### Bring up the application
 ```shell
  go run cmd/shopper/main.go -conf ./config/dev.yaml
 ```
 
-### add products to a cart and submit the order
+### Add products to a cart 
 ```shell
 curl -X POST http://localhost:8086/shopping/carts\?products\=1,2,3
-curl -X POST http://localhost:8086/shopping/orders?products=1,2,3
 ```
 
-### signal the order to continue the process 
+### Submit the order
+```shell
+curl -X POST http://localhost:8086/shopping/orders?products=1,2,3
+```
+### Confirm the invoice (signal the order)
 ```shell
 curl -X POST http://localhost:8086/shopping/orders/signal?orderId={orderID}&signalName=confirmInvoice&status=confirmed
+```
+
+### Confirm the shipping (signal the order)
+```shell
 curl -X POST http://localhost:8086/shopping/orders/signal?orderId={orderID}&signalName=confirmShipping&status=confirmed
 ```
